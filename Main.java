@@ -87,7 +87,7 @@ public class Main {
 				if(opcao == 1){
 
 					String Nome, End, Email, Pais, Num_pas;
-					int Cpf, Dt_nasc, Cep;
+					int Id, Cpf, Dt_nasc, Cep;
 					boolean ok;
 					
 					cliente.add("cliente" + i);
@@ -95,6 +95,7 @@ public class Main {
 							   email, numero do passaporte, Pais");
 
 					Scanner nome = new Scanner(System.in);
+					Id = i;
 					Nome = nome.next();
 					Scanner end = new Scanner(System.in);
 					End = end.next();
@@ -126,6 +127,7 @@ public class Main {
 					}
 					Scanner cep = new Scanner(System.in);
 					Cep = cep.nextInt();
+					int ClienteInd = busca(Id);
 					
 				}
 

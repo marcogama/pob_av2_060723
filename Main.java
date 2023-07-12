@@ -91,7 +91,7 @@ public class Main {
 					boolean ok;
 					
 					cliente.add("cliente" + i);
-					System.out.println("Digite os dados do cliente: nome, cpf, data de nascimento, endereco, cep,
+					System.out.println("Digite os dados do cliente: nome, cpf, data de nascimento(dd/mm/aa, endereco, cep,
 							   email, numero do passaporte, Pais");
 
 					Scanner nome = new Scanner(System.in);
@@ -99,9 +99,10 @@ public class Main {
 					Scanner end = new Scanner(System.in);
 					End = end.next();
 					Scanner email = new Scanner(System.in);
+					ok = false;
 					while(ok != true){
 						Email = nome.next();
-						Pattern verif = Pattern.compile(["@.|@.com|@.com.|^\b.", pattern.LITERAL]);
+						Pattern verif = Pattern.compile(["@."|"@.com"|"com."|"^\b."|\s], pattern.LITERAL);
 						Matcher compara = verif.matcher(Email);
 						ok = matcher.find();
 						if(ok == false)
@@ -114,7 +115,15 @@ public class Main {
 					Scanner cpf = new Scanner(System.in);
 					Cpf = nome.nextInt();
 					Scanner dt_nasc = new Scanner(System.in);
-					Dt_nasc = nome.nextInt();
+					ok = false;
+					while(ok != true){
+						Dt_nasc = nome.nextInt();
+						Pattern verif = Pattern.compile([0-9|"/"|^a-z|^A-Z|\s]);
+						Matcher compara = verif.matcher(Email);
+						ok = matcher.find();
+						if(ok == false)
+						System.out.println("data de nascimento invalida");
+					}
 					Scanner cep = new Scanner(System.in);
 					Cep = cep.nextInt();
 					

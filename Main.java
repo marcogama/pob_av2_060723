@@ -3,7 +3,7 @@ import java.util.*;
 import java.util.regex.*;
 public class Main {
 
-	public static int Busca(){
+	public static int Busca(int id){
 
 		for(int i : ){
 			if(i == id)

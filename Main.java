@@ -5,8 +5,7 @@ public class Main {
 
 	public static int Busca(){
 
-		ArrayList<Integer> busca = new ArrayList<Integer>();
-		for(int i : busca){
+		for(int i : ){
 			if(i == id)
 				return id;
 		}
@@ -141,7 +140,7 @@ public class Main {
 					}
 					Scanner cep = new Scanner(System.in);
 					Cep = cep.nextInt();
-					int ClienteInd = busca(Id);
+					int CliIndex = busca(Id);
 					
 				}
 

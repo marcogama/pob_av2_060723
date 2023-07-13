@@ -89,6 +89,8 @@ public class Main {
 					String Nome, End, Email, Pais, Num_pas;
 					int Id, Cpf, Dt_nasc, Cep;
 					boolean ok;
+					Nome = End = Email = Pais = Num_pas = NULL;
+					Id = Cpf = Dt_nasc = Cep =0;
 					
 					cliente.add("cliente" + i);
 					System.out.println("Digite os dados do cliente: nome, cpf, data de nascimento(dd/mm/aa, endereco, cep,

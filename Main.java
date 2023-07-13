@@ -90,7 +90,7 @@ public class Main {
 					int Id, Cpf, Dt_nasc, Cep;
 					boolean ok;
 					Nome = End = Email = Pais = Num_pas = NULL;
-					Id = Cpf = Dt_nasc = Cep =0;
+					Id = Cpf = Dt_nasc = Cep = 0;
 					
 					cliente.add("cliente" + i);
 					System.out.println("Digite os dados do cliente: nome, cpf, data de nascimento(dd/mm/aa, endereco, cep,
@@ -99,13 +99,21 @@ public class Main {
 					Scanner nome = new Scanner(System.in);
 					Id = i;
 					Nome = nome.next();
+					if(Nome == NULL){
+						while(Nome == NULL)
+							System.out.println("Digite o nome do cliente");
+					}
 					Scanner end = new Scanner(System.in);
 					End = end.next();
+					if(end == NULL){
+						while(end == NULL)
+							System.out.println("Digite o endereco");
+					}
 					Scanner email = new Scanner(System.in);
 					ok = false;
 					while(ok != true){
 						Email = nome.next();
-						Pattern verif = Pattern.compile(["@."|"@.com"|"com."|"^\b."|\s], pattern.LITERAL);
+						Pattern verif = Pattern.compile(["@."|"@.com"|"@.com."|"^\b."|\s], pattern.LITERAL);
 						Matcher compara = verif.matcher(Email);
 						ok = matcher.find();
 						if(ok == false)
@@ -117,6 +125,10 @@ public class Main {
 					Num_pas = num_pas.next();
 					Scanner cpf = new Scanner(System.in);
 					Cpf = nome.nextInt();
+					if(Cpf == 0){
+						while(Cpf == 0)
+							System.out.println("Digite o CPF");
+					}
 					Scanner dt_nasc = new Scanner(System.in);
 					ok = false;
 					while(ok != true){

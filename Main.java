@@ -91,7 +91,6 @@ public class Main {
 					Nome = End = Email = Pais = Num_pas = NULL;
 					Id = Cpf = Dt_nasc = Cep = 0;
 					
-					cliente.add("cliente" + i);
 					System.out.println("Digite os dados do cliente: nome, cpf, data de nascimento(dd/mm/aa, endereco, cep,
 							   email, numero do passaporte, Pais");
 
@@ -140,8 +139,9 @@ public class Main {
 					}
 					Scanner cep = new Scanner(System.in);
 					Cep = cep.nextInt();
-					int CliIndex = busca(Id);
-					
+
+					Cliente cliente[i] = new Cliente(Id, Nome, Cpf, Dt_nasc, End, Cep, Email, Num_pas, Pais);
+					i = i + 1;
 				}
 
 			}

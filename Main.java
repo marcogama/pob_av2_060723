@@ -147,7 +147,13 @@ public class Main {
 				}
 				if(opcao == 2){
 
-					
+					System.out.println("Digite o Id do cliente");
+					int ident = nextInt();
+					for (Integer i : cliente[Ident]){
+
+						if(ident == cliente[i])
+							cliente.remove(i);
+					} 
 				}
 
 			}

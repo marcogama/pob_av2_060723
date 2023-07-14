@@ -1,6 +1,7 @@
 package pob_av2_060723;
 import java.util.*;
 import java.util.regex.*;
+import java.io.*;
 public class Main {
 
 	public static int Busca(int id){
@@ -53,10 +54,10 @@ public class Main {
 		Quarto quarto = new Quarto();
 		Reserva reserva = new reserva();
 		
-		ArrayList<cama> = new ArrayList<cama>();
-		ArrayList<cliente> = new ArrayList<cliente>();
-		ArrayList<quarto> = new ArrayList<quarto>();
-		ArrayList<reserva> = new ArrayList<reserva>();
+		ArrayList<Integer> cama = new ArrayList<Integer>();
+		ArrayList<Integer> cliente = new ArrayList<Integer>();
+		ArrayList<Integer> quarto = new ArrayList<Integer>();
+		ArrayList<Integer> reserva = new ArrayList<Integer>();
 
 		int op, opcao, i, j, k, l;
 		i = j = k = l = 1;
@@ -141,9 +142,11 @@ public class Main {
 					Cep = cep.nextInt();
 
 					Cliente cliente[i] = new Cliente(Id, Cep, Cpf, Dt_nasc, Nome, End, Pais, Num_pas, Email);
+					cliente.add(Id);
 					i = i + 1;
 				}
 				if(opcao == 2){
+
 					
 				}
 

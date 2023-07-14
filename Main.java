@@ -140,8 +140,11 @@ public class Main {
 					Scanner cep = new Scanner(System.in);
 					Cep = cep.nextInt();
 
-					Cliente cliente[i] = new Cliente(Id, Nome, Cpf, Dt_nasc, End, Cep, Email, Num_pas, Pais);
+					Cliente cliente[i] = new Cliente(Id, Cep, Cpf, Dt_nasc, Nome, End, Pais, Num_pas, Email);
 					i = i + 1;
+				}
+				if(opcao == 2){
+					
 				}
 
 			}

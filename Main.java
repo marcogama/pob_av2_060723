@@ -265,65 +265,43 @@ public class Main {
 					System.out.println("Opcao invalida");
 				if(opcao == 1){
 
-					String Nome, End, Email, Pais, Num_pas;
-					int Id, Cpf, Dt_nasc, Cep;
-					boolean ok;
-					Nome = End = Email = Pais = Num_pas = NULL;
-					Id = Cpf = Dt_nasc = Cep = 0;
+					String Nome_quarto, Descr;
+					int Id, Qtde_cama;
+					boolean tem_bath, ok;
+					Nome_quarto = Descr = NULL;
+					Id = Qtde_cama = 0;
+					int i, j, k, l;
+					i = j = k = l = 1
 					
-					System.out.println("Digite os dados do cliente: nome, cpf, data de nascimento(dd/mm/aa, endereco, cep,
-							   email, numero do passaporte, Pais");
-
-					Scanner nome = new Scanner(System.in);
+					System.out.println("Digite as informações do quarto: nome do quarto, descrição, quantidade de camas,
+							   banheiro");
+					
 					Id = i;
 					
-					while(Nome == NULL){
-						System.out.println("Digite o nome do cliente");
-						Nome = nome.next();
+					Scanner nome_quarto = new Scanner(System.in);
+					while(Nome_quarto == NULL){
+						System.out.println("Digite o nome do quarto");
+						Nome_quarto = nome_quarto.next();
 					}
 					
-					Scanner end = new Scanner(System.in);
-					while(End == NULL){
-							System.out.println("Digite o endereco");
-							End = end.next();
+					Scanner descr = new Scanner(System.in);
+					while(Descr == NULL){
+							System.out.println("Descreva o quarto");
+							Descr = descr.next();
 					}
 					
-					Scanner email = new Scanner(System.in);
-					ok = false;
-					while(ok != true){
-						Email = email.next();
-						Pattern verif = Pattern.compile(["@."|"@.com"|"@.com."|"^\b."|\s], pattern.LITERAL);
-						Matcher compara = verif.matcher(Email);
-						ok = matcher.find();
-						if(ok == false)
-						System.out.println("email invalido");
-					}
+					Scanner tem_bath = new Scanner(System.in);
+					System.out.println("Tem banheiro no quarto : 1 - sim, 2 - nao");
+					tem_bath = nextInt();
+					if(tem_bath < 1 || tem_bath > 2)
+						System.out.println("Opcao invalida);
+					else if(tem_bath == 1)
+						Tem_bath = true;
+					else
+						Tem_bath = false;
 					
-					Scanner pais = new Scanner(System.in);
-					Pais = pais.next();
-					
-					Scanner num_pas = new Scanner(System.in);
-					Num_pas = num_pas.next();
-					
-					Scanner cpf = new Scanner(System.in);
-					while(Cpf == 0){
-						System.out.println("Digite o CPF");
-						Cpf = cpf.nextInt();
-					}
-					
-					Scanner dt_nasc = new Scanner(System.in);
-					ok = false;
-					while(ok != true){
-						Dt_nasc = dt_nasc.nextInt();
-						Pattern verif = Pattern.compile([0-9|"/"|^a-z|^A-Z|\s]);
-						Matcher compara = verif.matcher(Dt_nasc);
-						ok = matcher.find();
-						if(ok == false)
-						System.out.println("data de nascimento invalida");
-					}
-					
-					Scanner cep = new Scanner(System.in);
-					Cep = cep.nextInt();
+					Scanner qtde_cama = new Scanner(System.in);
+					Qtde_cama = qtde_cama.nextInt();
 
 					Cliente cliente[i] = new Cliente(Id, Cep, Cpf, Dt_nasc, Nome, End, Pais, Num_pas, Email);
 					cliente.add(Id);

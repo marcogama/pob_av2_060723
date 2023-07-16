@@ -133,7 +133,7 @@ public class Main {
 
 					System.out.println("Digite o id do cliente para alterar");
 					ident = digite.nextInt();
-					for(Integer i : cliente)
+					for(Integer i : cliente){
 						if(ident == i){
 							System.out.println("Id : " + cliente[ident].getId_cli());
 							System.out.println("Cep : " + cliente[ident].getPos_code_cli());
@@ -235,11 +235,12 @@ public class Main {
 								}
 							}
 							while(alter != 9);
+							}
 						} else
 							System.out.println("Cliente não encontrado!");
+					}
 				}
 				while(opcao != 5);
-				}
 			}
 
 			//CRUD QUARTO
@@ -369,15 +370,15 @@ public class Main {
 										Tem_bath = true;
 									else
 										Tem_bath = false;
-									quarto[ident].
+									quarto[ident].setTem_bath(Tem_bath);
 								}
 							}
 							while(alter != 5);
 						} else
 							System.out.println("Cliente não encontrado!");
+					}
 				}
 				while(opcao != 5);
-				}
 			}
 
 			// CRUD RESERVA

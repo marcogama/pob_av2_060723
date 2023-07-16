@@ -3,38 +3,38 @@ package pob_av2_060723;
 public class Quarto {
 
 		public int getQtde_cama() {
-		return qtde_cama;
+		return Qtde_cama;
 	}
-	public void setQtde_cama(int qtde_cama) {
-		this.qtde_cama = qtde_cama;
+	public void setQtde_cama(int Qtde_cama) {
+		this.Qtde_cama = Qtde_cama;
 	}
 	public String getDescricao() {
-		return descricao;
+		return Descricao;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescricao(String Descricao) {
+		this.Descricao = Descricao;
 	}
-	public boolean isTem_ban() {
-		return tem_ban;
+	public boolean isTem_bath() {
+		return Tem_bath;
 	}
-	public void setTem_ban(boolean tem_ban) {
-		this.tem_ban = tem_ban;
+	public void setTem_bath(boolean Tem_bath) {
+		this.Tem_bath = Tem_bath;
 	}
-	public int getiD_quarto() {
-		return iD_quarto;
+	public int getId_quarto() {
+		return Id_quarto;
 	}
 	public String getNomeQuarto() {
-		return nomeQuarto;
+		return NomeQuarto;
 	}
-		private Quarto(int iD_quarto, int qtde_cama, String nomeQuarto, String descricao, boolean tem_ban) {
+		private Quarto(int Id_quarto, int Qtde_cama, String NomeQuarto, String Descricao, boolean Tem_bath) {
 		super();
-		this.iD_quarto = iD_quarto;
-		this.qtde_cama = qtde_cama;
-		this.nomeQuarto = nomeQuarto;
-		this.descricao = descricao;
-		this.tem_ban = tem_ban;
+		this.Id_quarto = Id_quarto;
+		this.Qtde_cama = Qtde_cama;
+		this.NomeQuarto = NomeQuarto;
+		this.Descricao = Descricao;
+		this.Tem_bath = Tem_bath;
 	}
-		int iD_quarto, qtde_cama;
-		String nomeQuarto, descricao;
-		boolean tem_ban;
+		int Id_quarto, Qtde_cama;
+		String NomeQuarto, Descricao;
+		boolean Tem_bath;
 }

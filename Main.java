@@ -123,7 +123,7 @@ public class Main {
 					Scanner num_pas = new Scanner(System.in);
 					Num_pas = num_pas.next();
 					Scanner cpf = new Scanner(System.in);
-					Cpf = nome.nextInt();
+					Cpf = cpf.nextInt();
 					if(Cpf == 0){
 						while(Cpf == 0)
 							System.out.println("Digite o CPF");
@@ -149,11 +149,60 @@ public class Main {
 
 					System.out.println("Digite o Id do cliente");
 					int ident = nextInt();
-					for (Integer i : cliente[Ident]){
+					for(Integer i : cliente){
 
-						if(ident == cliente[i])
+						if(ident == i)
 							cliente.remove(i);
+						else
+							System.out.println("Cliente não encontrado");
 					} 
+				}
+				if(opcao == 3){
+
+					for(Integer i : cliente)
+						System.out.println("- Cliente" + i + " Id = " + i);
+				}
+				if(opcao == 4){
+
+					System.out.println("Digite o id do cliente para alterar");
+					int ident = nextInt();
+					for(Integer i : cliente)
+						if(ident == i){
+							System.out.println("Id : " + cliente[ident].getId());
+							System.out.println("Cep : " + cliente[ident].getCep());
+							System.out.println("Cpf : " + cliente[ident].getCpf());
+							System.out.println("Data de Nascimento : " + cliente[ident].getDt_nasc());
+							System.out.println("Nome : " + cliente[ident].getNome());
+							System.out.println("Endereço : " + cliente[ident].getEnd());
+							System.out.println("País : " + cliente[ident].getPais());
+							System.out.println("Numero do passaporte : " + cliente[ident].getNum_pas());
+							System.out.println("Email : " + cliente[ident].getEmail());
+							do{
+								System.out.println("\nOpções:\n");
+								System.out.println("1 : Nome ");
+								System.out.println("2 : Cpf ");
+								System.out.println("3 : Data Nascimento ");
+								System.out.println("4 : Endereço ");
+								System.out.println("5 : Cep ");
+								System.out.println("6 : Numero passaporte ");
+								System.out.println("7 : País ");
+								System.out.println("8 : Email ");
+								System.out.println("9 : Sair ");
+
+								System.out.println("Digite a opção ");
+								int alter = digite.nextInt();
+								if(alter < 1 || alter > 9)
+									System.out.println("Opção invalida ");
+								if(alter == 1){
+
+									Scanner nome = new Scanner(System.in);
+									System.out.println("Digite o novo nome");
+    									String Nome = nome.next();
+									cliente[ident].setNome(Nome);
+								}
+							}
+						} else
+							System.out.println("Cliente não encontrado!");
 				}
 
 			}

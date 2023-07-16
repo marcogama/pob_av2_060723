@@ -8,18 +8,14 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		Scanner digite = new Scanner(System.in);
-		Cama cama = new Cama();
-		Cliente cliente = new Cliente();
-		Quarto quarto = new Quarto();
-		Reserva reserva = new reserva();
 		
 		ArrayList<Integer> cama = new ArrayList<Integer>();
 		ArrayList<Integer> cliente = new ArrayList<Integer>();
 		ArrayList<Integer> quarto = new ArrayList<Integer>();
 		ArrayList<Integer> reserva = new ArrayList<Integer>();
 
-		int op, opcao, i, j, k, l;
-		i = j = k = l = 1;
+		Int Id_cliente, Id_quarto, ;
+		int op, opcao, ident, alter;
 		do{
 			System.out.println("\nMenu de Opcoes\n");
 			System.out.println("1 : Cliente");
@@ -47,16 +43,15 @@ public class Main {
 				if(opcao == 1){
 
 					String Nome, End, Email, Pais, Num_pas;
-					int Id, Cpf, Dt_nasc, Cep;
+					int Cpf, Dt_nasc, Cep;
 					boolean ok;
 					Nome = End = Email = Pais = Num_pas = NULL;
-					Id = Cpf = Dt_nasc = Cep = 0;
+					Cpf = Dt_nasc = Cep = 0;
 					
 					System.out.println("Digite os dados do cliente: nome, cpf, data de nascimento(dd/mm/aa, endereco, cep,
 							   email, numero do passaporte, Pais");
 
 					Scanner nome = new Scanner(System.in);
-					Id = i;
 					
 					while(Nome == NULL){
 						System.out.println("Digite o nome do cliente");
@@ -106,14 +101,14 @@ public class Main {
 					Scanner cep = new Scanner(System.in);
 					Cep = cep.nextInt();
 
-					Cliente cliente[i] = new Cliente(Id, Cep, Cpf, Dt_nasc, Nome, End, Pais, Num_pas, Email);
-					cliente.add(Id);
-					i = i + 1;
+					Cliente cliente[Id_cliente] = new Cliente(Id_cliente, Cep, Cpf, Dt_nasc, Nome, End, Pais, Num_pas, Email);
+					cliente.add(Id_cliente);
+					Id_cliente += 1;
 				}
 				if(opcao == 2){
 
 					System.out.println("Digite o Id do cliente");
-					int ident = nextInt();
+					ident = nextInt();
 					for(Integer i : cliente){
 
 						if(ident == i)
@@ -130,18 +125,18 @@ public class Main {
 				if(opcao == 4){
 
 					System.out.println("Digite o id do cliente para alterar");
-					int ident = nextInt();
+					ident = nextInt();
 					for(Integer i : cliente)
 						if(ident == i){
 							System.out.println("Id : " + cliente[ident].getId());
-							System.out.println("Cep : " + cliente[ident].getCep());
-							System.out.println("Cpf : " + cliente[ident].getCpf());
-							System.out.println("Data de Nascimento : " + cliente[ident].getDt_nasc());
-							System.out.println("Nome : " + cliente[ident].getNome());
-							System.out.println("Endereço : " + cliente[ident].getEnd());
-							System.out.println("País : " + cliente[ident].getPais());
-							System.out.println("Numero do passaporte : " + cliente[ident].getNum_pas());
-							System.out.println("Email : " + cliente[ident].getEmail());
+							System.out.println("Cep : " + cliente[ident].getPos_code_cli());
+							System.out.println("Cpf : " + cliente[ident].getCpf_cli());
+							System.out.println("Data de Nascimento : " + cliente[ident].getDt_nasc_cli());
+							System.out.println("Nome : " + cliente[ident].getNome_cli());
+							System.out.println("Endereço : " + cliente[ident].getEnd_cli());
+							System.out.println("País : " + cliente[ident].getNome_pais_cli());
+							System.out.println("Numero do passaporte : " + cliente[ident].getPass_cli());
+							System.out.println("Email : " + cliente[ident].getEmail_cli());
 							do{
 								System.out.println("\nOpções:\n");
 								System.out.println("1 : Nome ");
@@ -155,7 +150,7 @@ public class Main {
 								System.out.println("9 : Sair ");
 
 								System.out.println("Digite a opção ");
-								int alter = digite.nextInt();
+								alter = digite.nextInt();
 								if(alter < 1 || alter > 9)
 									System.out.println("Opção invalida ");
 								if(alter == 1){
@@ -266,17 +261,13 @@ public class Main {
 				if(opcao == 1){
 
 					String Nome_quarto, Descr;
-					int Id, Qtde_cama;
-					boolean tem_bath, ok;
+					int Qtde_cama;
+					boolean Tem_bath;
 					Nome_quarto = Descr = NULL;
-					Id = Qtde_cama = 0;
-					int i, j, k, l;
-					i = j = k = l = 1
+					Qtde_cama = 0;
 					
 					System.out.println("Digite as informações do quarto: nome do quarto, descrição, quantidade de camas,
 							   banheiro");
-					
-					Id = i;
 					
 					Scanner nome_quarto = new Scanner(System.in);
 					while(Nome_quarto == NULL){
@@ -303,15 +294,15 @@ public class Main {
 					Scanner qtde_cama = new Scanner(System.in);
 					Qtde_cama = qtde_cama.nextInt();
 
-					Cliente cliente[i] = new Cliente(Id, Cep, Cpf, Dt_nasc, Nome, End, Pais, Num_pas, Email);
-					cliente.add(Id);
-					i = i + 1;
+					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, Nome_quarto, Descr,Tem_bath);
+					cliente.add(Id_quarto);
+					Id_quarto += 1;
 				}
 				if(opcao == 2){
 
-					System.out.println("Digite o Id do cliente");
+					System.out.println("Digite o Id do quarto");
 					int ident = nextInt();
-					for(Integer i : cliente){
+					for(Integer i : quarto){
 
 						if(ident == i)
 							cliente.remove(i);
@@ -322,23 +313,23 @@ public class Main {
 				if(opcao == 3){
 
 					for(Integer i : cliente)
-						System.out.println("- Cliente" + i + " Id = " + i);
+						System.out.println("- Quarto" + i + " Id = " + i);
 				}
 				if(opcao == 4){
 
-					System.out.println("Digite o id do cliente para alterar");
+					System.out.println("Digite o id do quarto para alterar");
 					int ident = nextInt();
-					for(Integer i : cliente)
+					for(Integer i : quarto)
 						if(ident == i){
-							System.out.println("Id : " + cliente[ident].getId());
-							System.out.println("Cep : " + cliente[ident].getCep());
-							System.out.println("Cpf : " + cliente[ident].getCpf());
-							System.out.println("Data de Nascimento : " + cliente[ident].getDt_nasc());
-							System.out.println("Nome : " + cliente[ident].getNome());
-							System.out.println("Endereço : " + cliente[ident].getEnd());
-							System.out.println("País : " + cliente[ident].getPais());
-							System.out.println("Numero do passaporte : " + cliente[ident].getNum_pas());
-							System.out.println("Email : " + cliente[ident].getEmail());
+							System.out.println("Id : " + quarto[ident].getId_quarto());
+							System.out.println("Quantidade de camas : " + quarto[ident].getQtde_cama());
+							System.out.println("Nome do quarto : " + quarto[ident].getNome_quarto());
+							System.out.println("Descrição do quarto : " + quarto[ident].getDescricao());
+							if(quarto[ident].isTem_bath())
+								System.out.println("Tem banheiro");
+							else
+								System.out.println("Não tem banheiro");
+							
 							do{
 								System.out.println("\nOpções:\n");
 								System.out.println("1 : Nome ");

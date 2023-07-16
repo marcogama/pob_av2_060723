@@ -50,6 +50,9 @@ public class Cliente {
 	public String getPass_cli() {
 		return pass_cli;
 	}
+	public void setPass_cli(int pass_cli) {
+		this.pass_cli = pass_cli;
+	}
 	public Cliente(int id_cli, int pos_code_cli, int cpf_cli, int dt_nasc_cli, String nome_cli, String end_cli,
 			String nome_pais_cli, String pass_cli, String email_cli) {
 		super();

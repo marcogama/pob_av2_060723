@@ -61,13 +61,13 @@ public class Main {
 					System.out.println("Digite os dados do cliente: nome, cpf, data de nascimento(dd/mm/aa, endereco, cep,
 							   email, numero do passaporte, Pais");
 					Nome = NULL;
-					while(Nome == NULL){  // NOME NAO PODE FICAR VAZIO
+					while(Nome == NULL){                                   // NOME NAO PODE FICAR VAZIO
 						System.out.println("Digite o nome do cliente");
 						Nome = digite.next();
 					}
 
 					End = NULL;
-					while(End == NULL){  // ENDEREÇO NAO PODE FICAR VAZIO
+					while(End == NULL){                                   // ENDEREÇO NAO PODE FICAR VAZIO
 							
 						System.out.println("Digite o endereco");
 						End = digite.next();
@@ -93,7 +93,7 @@ public class Main {
 					Num_pas = digite.next();
 
 					Cpf = 0;
-					while(Cpf == 0){ //CPF NÃO PODE FICAR VAZIO
+					while(Cpf == 0){                                  //CPF NÃO PODE FICAR VAZIO
 						System.out.println("Digite o CPF");
 						Cpf = digite.nextInt();
 					}
@@ -116,8 +116,8 @@ public class Main {
 					// CRIANDO UM OBJETO CLIENTE COM SEUS ATRIBUTOS
 					
 					Cliente cliente[Id_cliente] = new Cliente(Id_cliente, Cep, Cpf, Dt_nasc, Nome, End, Pais, Num_pas, Email);
-					cliente.add(Id_cliente);
-					Id_cliente += 1;
+					cliente.add(Id_cliente);          //ADICIONANDO ID_CLIENTE NA ARRAY
+					Id_cliente += 1;                  //ID_CLIENTE É AUTOINCREMENTAL
 				}
 				if(opcao == 2){
 
@@ -482,7 +482,7 @@ public class Main {
 						if(ok == false)
 						System.out.println("data de entrada inválida");
 					}
-					reserva[ident].setDt_in(Dt_in);
+					reserva[ident].setDt_in(Dt_in);               //SET DA DATA DE ENTRADA NO OBJETO RESERVA
 
 					ok = false;
 
@@ -518,35 +518,39 @@ public class Main {
 				}
 				if(opcao == 3){
 
-					for(Integer i : quarto)
-						System.out.println("- Quarto" + i + " Id = " + i);
+					for(Integer i : reserva)
+						System.out.println("- Reserva" + i + " Id = " + i);
 				}
 				if(opcao == 4){
 
-					System.out.println("Digite o id do quarto para alterar");
+					System.out.println("Digite o id da reserva para alterar");
 					ident = digite.nextInt();
-					for(Integer i : quarto){
+					for(Integer i : reserva){
+
+						//LISTANDO A RESERVA SELECIONADA
+						
 						if(ident == i){
-							System.out.println("Id : " + quarto[ident].getId_quarto());
-							System.out.println("Quantidade de camas : " + quarto[ident].getQtde_cama());
-							System.out.println("Nome do quarto : " + quarto[ident].getNome_quarto());
-							System.out.println("Descrição do quarto : " + quarto[ident].getDescricao());
-							if(quarto[ident].isTem_bath())
-								System.out.println("Tem banheiro");
-							else
-								System.out.println("Não tem banheiro");
+							System.out.println("Id : " + reserva[ident].getId_reserva());
+							System.out.println("Id : " + reserva[ident].getId_cliente());
+							System.out.println("Id : " + reserva[ident].getId_quarto());
+							System.out.println("Id : " + reserva[ident].getId_cama());
+							System.out.println("Data de entrada: " + reserva[ident].getDt_in());
+							System.out.println("Data de saída: " + reserva[ident].getDt_out());
+
+							//ALTERANDO A RESERVA
 							
 							do{
 								System.out.println("\nOpções:\n");
-								System.out.println("1 : Nome ");
-								System.out.println("2 : Descrição ");
-								System.out.println("3 : Quantidade de camas ");
-								System.out.println("4 : Tem banheiro ");
-								System.out.println("5 : Sair ");
+								System.out.println("1 : Id cliente ");
+								System.out.println("2 : Id quarto ");
+								System.out.println("3 : Id cama ");
+								System.out.println("4 : Data de entrada ");
+								System.out.println("5 : Data de saída ");
+								System.out.println("6 : Sair ");
 
 								System.out.println("Digite a opção ");
 								alter = digite.nextInt();
-								if(alter < 1 || alter > 5)
+								if(alter < 1 || alter > 6)
 									System.out.println("Opção invalida ");
 								if(alter == 1){
 
@@ -555,7 +559,7 @@ public class Main {
 										System.out.println("Digite o novo nome");
 										NomeQuarto = digite.next();
 									}
-									quarto[Id_quarto].setNome_quarto(NomeQuarto);
+									reserva[ident].setId_cliente(id_cliente);
 								}
 								
 								if(alter == 2){

@@ -27,14 +27,14 @@ public class Main {
 		ArrayList<Integer> quarto = new ArrayList<Integer>();
 		ArrayList<Integer> reserva = new ArrayList<Integer>();
 
-		Int Id_cliente, Id_quarto, ;
+		Int Id_cliente, Id_quarto, Id_reserva, Id_cama;
+		Id_cliente = Id_quarto = Id_reserva = Id_cama = 1;
 		int op, opcao, ident, alter;
 		String Nome, End, Email, Pais, Num_pas;
-		int Cpf, Dt_nasc, Cep;
-		boolean ok;
+		int Cpf, Dt_nasc, Cep, Dt_in, Dt_out;
+		boolean ok, Tem_bath;
 		String Nome_quarto, Descr;
 		int Qtde_cama;
-		boolean Tem_bath;
 		
 		do{
 			System.out.println("\nMenu de Opcoes\n");
@@ -120,7 +120,7 @@ public class Main {
 
 						if(ident == i)
 							cliente.remove(i);
-						else
+						else if(i + 1 == cliente.size())
 							System.out.println("Cliente não encontrado");
 					} 
 				}
@@ -236,7 +236,7 @@ public class Main {
 							}
 							while(alter != 9);
 							}
-							else
+							else if(i + 1 == cliente.size())
 								System.out.println("Cliente não encontrado!");
 						}
 					}
@@ -289,6 +289,148 @@ public class Main {
 					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, Nome_quarto, Descr,Tem_bath);
 					cliente.add(Id_quarto);
 					Id_quarto += 1;
+				}
+				if(opcao == 2){
+
+					System.out.println("Digite o Id do quarto");
+					ident = digite.nextInt();
+					for(Integer i : quarto){
+
+						if(ident == i)
+							cliente.remove(i);
+						else if(i + 1 == quarto.size())
+							System.out.println("Cliente não encontrado");
+					} 
+				}
+				if(opcao == 3){
+
+					for(Integer i : quarto)
+						System.out.println("- Quarto" + i + " Id = " + i);
+				}
+				if(opcao == 4){
+
+					System.out.println("Digite o id do quarto para alterar");
+					ident = digite.nextInt();
+					for(Integer i : quarto){
+						if(ident == i){
+							System.out.println("Id : " + quarto[ident].getId_quarto());
+							System.out.println("Quantidade de camas : " + quarto[ident].getQtde_cama());
+							System.out.println("Nome do quarto : " + quarto[ident].getNome_quarto());
+							System.out.println("Descrição do quarto : " + quarto[ident].getDescricao());
+							if(quarto[ident].isTem_bath())
+								System.out.println("Tem banheiro");
+							else
+								System.out.println("Não tem banheiro");
+							
+							do{
+								System.out.println("\nOpções:\n");
+								System.out.println("1 : Nome ");
+								System.out.println("2 : Descrição ");
+								System.out.println("3 : Quantidade de camas ");
+								System.out.println("4 : Tem banheiro ");
+								System.out.println("5 : Sair ");
+
+								System.out.println("Digite a opção ");
+								alter = digite.nextInt();
+								if(alter < 1 || alter > 5)
+									System.out.println("Opção invalida ");
+								if(alter == 1){
+
+									NomeQuarto = NULL;
+									while(Nome == NULL){
+										System.out.println("Digite o novo nome");
+										NomeQuarto = nomeQuarto.next();
+									}
+									quarto[ident].setNome_quarto(NomeQuarto);
+								}
+								
+								if(alter == 2){
+
+									descr = NULL;;
+									while(descr == NULL){
+										System.out.println("Descreva o quarto");
+							 			Descr = descr.next();
+									}
+									quarto[ident].setDescricao(Descr);
+								}
+								
+								if(alter == 3){
+
+									System.out.println("Digite a nova quantidade");
+									Qtde_cama = qtde_cama.nextInt();
+									quarto[ident].setQtde_cama(Qtde_cama);
+								}
+								
+								if(alter == 4){
+
+									System.out.println("Tem banheiro no quarto : 1 - sim, 2 - nao");
+									tem_bath = digite.nextInt();
+									if(tem_bath < 1 || tem_bath > 2)
+										System.out.println("Opcao invalida);
+									else if(tem_bath == 1)
+										Tem_bath = true;
+									else
+										Tem_bath = false;
+									quarto[ident].setTem_bath(Tem_bath);
+								}
+							}
+							while(alter != 5);
+						} else if(i + 1 == quarto.size())
+							System.out.println("Cliente não encontrado!");
+					}
+				}
+			}
+			while(opcao != 5);
+			}
+
+			// CRUD RESERVA
+			
+			if(op == 3){
+
+				do{
+				System.out.println("\nMenu de Opcoes\n");
+				System.out.println("1 : Inserir Reserva");
+				System.out.println("2 : Excluir Reserva");
+				System.out.println("3 : Listar Reserva");
+				System.out.println("4 : Alterar Reserva");
+				System.out.println("5 : Sair");
+ 
+				opcao = digite.nextInt();
+				if(opcao < 1 || opcao > 5)
+					System.out.println("Opcao invalida");
+				if(opcao == 1){
+					
+					for(Integer i : cliente)
+						System.out.println(i);
+
+					for(Integer i : quarto)
+						System.out.println(i);
+
+					for(Integer i : cama)
+						System.out.println(i);
+
+					Reserva reserva[Id_reserva] = new Cliente(Id_reserva, 0, 0, 0, 0, 0);
+					System.out.println("Digite o Id do quarto, Id do Cliente, Id da cama, data de entrada e saída");
+
+					System.out.println("Digite o Id do quarto");
+					ident = digite.nextInt();
+					ok = false;
+					while(ok != true){
+
+						for(Integer i : quarto){
+							
+							if(ident == i){
+								ok = true;
+								reserva[ident].setId_quarto(i);
+							}else if(i + 1 == quarto.size())
+								System.out.println("Id do quarto não encontrado");
+						}
+					}
+					Qtde_cama = qtde_cama.nextInt();
+
+					Reserva reserva[Id_reserva] = new Cliente(Id_reserva, Id_quarto, Id_cliente, Id_cama, Dt_in, Dt_out);
+					reserva.add(Id_reserva);
+					Id_reserva += 1;
 				}
 				if(opcao == 2){
 
@@ -383,9 +525,7 @@ public class Main {
 			while(opcao != 5);
 			}
 
-			// CRUD RESERVA
-			
-			if(op == 3){}
+			}
 
 			// CRUD CAMA
 			

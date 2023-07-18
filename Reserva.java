@@ -3,41 +3,46 @@ package pob_av2_060723;
 public class Reserva {
 
 	public int getDt_in() {
-		return dt_in;
+		return Dt_in;
 	}
 
-	public void setDt_in(int dt_in) {
-		this.dt_in = dt_in;
+	public void setDt_in(int Dt_in) {
+		this.Dt_in = Dt_in;
 	}
 
 	public int getDt_out() {
-		return dt_out;
+		return Dt_out;
 	}
 
-	public void setDt_out(int dt_out) {
-		this.dt_out = dt_out;
+	public void setDt_out(int Dt_out) {
+		this.Dt_out = Dt_out;
 	}
 
 	public int getId_reserva() {
-		return id_reserva;
+		return Id_reserva;
 	}
 
 	public int getId_quarto() {
-		return id_quarto;
+		return Id_quarto;
 	}
 
 	public int getId_cliente() {
-		return id_cliente;
+		return Id_cliente;
 	}
 
-	private Reserva(int id_reserva, int id_quarto, int id_cliente, int dt_in, int dt_out) {
+	public int getId_cama() {
+		return Id_cama;
+	}
+
+	private Reserva(int Id_reserva, int Id_quarto, int Id_cliente, int Id_cama, int Dt_in, int Dt_out) {
 		super();
-		this.id_reserva = id_reserva;
-		this.id_quarto = id_quarto;
-		this.id_cliente = id_cliente;
-		this.dt_in = dt_in;
-		this.dt_out = dt_out;
+		this.Id_reserva = Id_reserva;
+		this.Id_quarto = Id_quarto;
+		this.Id_cliente = Id_cliente;
+		this.Id_cama = Id_cama;
+		this.Dt_in = Dt_in;
+		this.Dt_out = Dt_out;
 	}
 
-	int id_reserva, id_quarto, id_cliente, dt_in, dt_out;
+	int Id_reserva, Id_quarto, Id_cliente, Id_cama, Dt_in, Dt_out;
 }

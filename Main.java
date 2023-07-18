@@ -293,8 +293,8 @@ public class Main {
 					Qtde_cama = digite.nextInt();
 
 					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, NomeQuarto, Descr,Tem_bath);
-					cliente.add(Id_quarto);
-					Id_quarto += 1;
+					cliente.add(Id_quarto);                  //ADICIONANDO ID_QUARTO N0 ARRAY
+					Id_quarto += 1;                          //ID_QUARTO É AUTOINCREMENTAL
 				}
 				if(opcao == 2){
 
@@ -491,12 +491,12 @@ public class Main {
 						System.out.println("Digite a data de saída do cliente");
 						Dt_out = digite.nextInt();
 						Pattern verif = Pattern.compile([0-9|"/"|^a-z|^A-Z|\s]);
-						Matcher compara = verif.matcher(Dt_in);
+						Matcher compara = verif.matcher(Dt_out);
 						ok = matcher.find();
 						if(ok == false)
 						System.out.println("data de entrada invalida");
 					}
-					reserva[ident].setDt_out(Dt_out);
+					reserva[ident].setDt_out(Dt_out);                           //SET DA DATA DE SAÍDA NO OBJETO RESERVA
 
 					reserva.add(Id_reserva);            //ADICIONANDO O ID RESERVA AO ARRAYLIST
 					Id_reserva += 1;                    //INCREMENTANDO ID_RESERVA
@@ -633,7 +633,7 @@ public class Main {
 										System.out.println("Digite a data de saída do cliente");
 										Dt_out = digite.nextInt();
 										Pattern verif = Pattern.compile([0-9|"/"|^a-z|^A-Z|\s]);
-										Matcher compara = verif.matcher(Dt_in);
+										Matcher compara = verif.matcher(Dt_out);
 										ok = matcher.find();
 										if(ok == false)
 											System.out.println("data de entrada invalida");
@@ -691,6 +691,8 @@ public class Main {
 						Eh_bel = true;
 					else
 						Eh_bel = false;
+					cama.add(Id_cama);                        //ADICIONANDO O ID_CAMA NO ARRAYLIST
+					Id_cama += i;                             //INCREMENTANDO O ID_CAMA
 
 				}
 

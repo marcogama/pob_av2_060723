@@ -23,11 +23,9 @@ public class Main {
 		Int Id_cliente, Id_quarto, Id_reserva, Id_cama;
 		Id_cliente = Id_quarto = Id_reserva = Id_cama = 1;
 		int op, opcao, ident, alter;
-		String Nome, End, Email, Pais, Num_pas;
-		int Cpf, Dt_nasc, Cep, Dt_in, Dt_out;
-		boolean ok, Tem_bath;
-		String Nome_quarto, Descr;
-		int Qtde_cama;
+		String Nome, End, Email, Pais, Num_pas, NomeQuarto, Descr, Pos_cama, Descr_cama;
+		int Cpf, Dt_nasc, Cep, Dt_in, Dt_out, tem_bath, Qtde_cama, Cod_cama, eh_bel;
+		boolean ok, Tem_bath, Eh_bel;
 
 		// OPÇÕES DE ACESSO AO OBJETO
 		do{
@@ -190,7 +188,7 @@ public class Main {
 									ok = false;
 									while(ok != true){
 										System.out.println("Digite a nova data de nascimento");
-										Integer Dt_nasc = digite.nextInt();
+										Dt_nasc = digite.nextInt();
 										Pattern verif = Pattern.compile([0-9|"/"|^a-z|^A-Z|\s]);
 										Matcher compara = verif.matcher(Dt_nasc);
 										ok = matcher.find();
@@ -201,7 +199,7 @@ public class Main {
 								}
 								if(alter == 4){
 									
-									String End = NULL;
+									End = NULL;
 									while(End == NULL){
 										System.out.println("Digite o novo endereço");
 										End = digite.next();
@@ -211,7 +209,7 @@ public class Main {
 								if(alter == 5){
 
 									System.out.println("Digite o novo cep");
-    									String Cep = digite.nextInt();
+    									Cep = digite.nextInt();
 									cliente[ident].setPos_code_cli(Cep);
 								}
 								if(alter == 6){
@@ -223,7 +221,7 @@ public class Main {
 								if(alter == 7){
 
 									System.out.println("Digite o País");
-    									String Pais = digite.next();
+    									Pais = digite.next();
 									cliente[ident].setNome_pais_cli(Pais);
 								}
 								if(alter == 8){
@@ -231,7 +229,7 @@ public class Main {
 									ok = false;
 									while(ok != true){
 										System.out.println("Digite o novo email");
-										String Email = digite.next();
+										Email = digite.next();
 										Pattern verif = Pattern.compile(["@."|"@.com"|"@.com."|"^\b."|\s], pattern.LITERAL);
 										Matcher compara = verif.matcher(Email);
 										ok = matcher.find();
@@ -290,10 +288,11 @@ public class Main {
 						Tem_bath = true;
 					else
 						Tem_bath = false;
-					
+
+					System.out.println("Quantas camas tem no quarto?");
 					Qtde_cama = digite.nextInt();
 
-					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, Nome_quarto, Descr,Tem_bath);
+					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, NomeQuarto, Descr,Tem_bath);
 					cliente.add(Id_quarto);
 					Id_quarto += 1;
 				}
@@ -322,7 +321,7 @@ public class Main {
 						if(ident == i){
 							System.out.println("Id : " + quarto[ident].getId_quarto());
 							System.out.println("Quantidade de camas : " + quarto[ident].getQtde_cama());
-							System.out.println("Nome do quarto : " + quarto[ident].getNome_quarto());
+							System.out.println("Nome do quarto : " + quarto[ident].getNomeQuarto());
 							System.out.println("Descrição do quarto : " + quarto[ident].getDescricao());
 							if(quarto[ident].isTem_bath())
 								System.out.println("Tem banheiro");
@@ -348,13 +347,13 @@ public class Main {
 										System.out.println("Digite o novo nome");
 										NomeQuarto = digite.next();
 									}
-									quarto[ident].setNome_quarto(NomeQuarto);
+									quarto[ident].setNomeQuarto(NomeQuarto);
 								}
 								
 								if(alter == 2){
 
-									descr = NULL;;
-									while(descr == NULL){
+									Descr = NULL;;
+									while(Descr == NULL){
 										System.out.println("Descreva o quarto");
 							 			Descr = digite.next();
 									}
@@ -654,7 +653,141 @@ public class Main {
 
 			// CRUD CAMA
 			
-			if(op == 4){}
+			if(op == 4){
+
+			do{
+				System.out.println("\nMenu de Opcoes\n");
+				System.out.println("1 : Inserir Cama");
+				System.out.println("2 : Excluir Cama");
+				System.out.println("3 : Listar Cama");
+				System.out.println("4 : Alterar Cama");
+				System.out.println("5 : Sair");
+ 
+				opcao = digite.nextInt();
+				if(opcao < 1 || opcao > 5)
+					System.out.println("Opcao invalida");
+				if(opcao == 1){
+
+					Cama cama[Id_cama] = new Cliente(Id_reserva, 0, NULL, NULL, Eh_bel);                        //CRIANDO O OBJETO CAMA
+					System.out.println("Digite o Codigo da cama, a posição, a descrição da cama e se é beliche");
+					
+					System.out.println("Digite o Código da cama");
+					ident = digite.nextInt();
+					cama[Id_cama].setCod_cama(ident);
+					
+					System.out.println("Digite a posição da cama");
+					ident = digite.next();
+					cama[Id_cama].setPos_cama(ident);
+					
+					System.out.println("Descreva a cama");
+					ident = digite.next();
+					cama[Id_cama].setDescr_cama(ident);
+
+					System.out.println("É beliche : 1 - sim, 2 - nao");
+					eh_bel = digite.nextInt();
+					if(eh_bel < 1 || eh_bel > 2)
+						System.out.println("Opcao invalida);
+					else if(eh_bel == 1)
+						Eh_bel = true;
+					else
+						Eh_bel = false;
+
+				}
+
+					
+				if(opcao == 2){
+
+					System.out.println("Digite o Id da cama");
+					ident = digite.nextInt();
+					for(Integer i : cama){                             //PERCORRENDO O ARRAY CAMA
+
+						if(ident == i)
+							cama.remove(i);
+						else if(i == cama.size())                  
+							System.out.println("Reserva não encontrada");
+					} 
+				}
+				if(opcao == 3){
+
+					for(Integer i : cama)
+						System.out.println("- Cama" + i + " Id = " + i);
+				}
+				if(opcao == 4){
+
+					System.out.println("Digite o id da cama para alterar");
+					ident = digite.nextInt();
+					for(Integer i : cama){
+
+						//LISTANDO A CAMA SELECIONADA
+						
+						if(ident == i){
+							System.out.println("Id : " + cama[ident].getId_cama());
+							System.out.println("Código : " + cama[ident].getCod_cama());
+							System.out.println("Posição : " + cama[ident].getPos_cama());
+							System.out.println("Id : " + cama[ident].getDescr_cama());
+							if(quarto[ident].isEh_bel())
+								System.out.println("É beliche");
+							else
+								System.out.println("Não É beliche");
+
+							//ALTERANDO A CAMA
+							
+							do{
+								System.out.println("\nOpções:\n");
+								System.out.println("1 : Código da cama ");
+								System.out.println("2 : Posição ");
+								System.out.println("3 : Descrição ");
+								System.out.println("4 : É beliche? ");
+								System.out.println("5 : Sair ");
+
+								System.out.println("Digite a opção ");
+								alter = digite.nextInt();
+								if(alter < 1 || alter > 5)
+									System.out.println("Opção invalida ");
+								if(alter == 1){
+
+									System.out.println("Digite o Código da cama");
+					                                Cod_cama = digite.nextInt();
+					                                cama[ident].setCod_cama(Cod_cama);	
+								}
+								
+								if(alter == 2){
+
+									System.out.println("Digite a posição da cama");
+									Pos_cama = digite.next();
+									cama[ident].setPos_cama(Pos_cama);
+								}
+								
+								if(alter == 3){
+
+									System.out.println("Descreva a cama");
+					                                Descr_cama = digite.next();
+					 				cama[ident].setDescr_cama(Descr_cama);
+								}
+								
+								if(alter == 4){
+
+									System.out.println("É beliche : 1 - sim, 2 - nao");
+									eh_bel = digite.nextInt();
+									if(eh_bel < 1 || eh_bel > 2)
+										System.out.println("Opcao invalida);
+									else if(eh_bel == 1){
+										Eh_bel = true;
+										cama[ident].setEhbel(Eh_bel);
+									}
+									else{
+										Eh_bel = false;
+										cama[ident].setEhbel(Eh_bel);
+									}	
+								}
+								while(alter != 5);
+						} else
+							System.out.println("Cama não encontrada!");
+					}
+				}
+			}
+			while(opcao != 5);
+			}
 			
 		}
 		while(op != 5);

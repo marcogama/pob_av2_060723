@@ -20,10 +20,10 @@ public class Cama {
 	public int getCod_cama() {
 		return cod_cama;
 	}
-	public boolean isEh_beliche() {
+	public boolean isEh_bel() {
 		return eh_beliche;
 	}
-	private Cama(int id_cama, int cod_cama, String pos_cama, String descr_cama, boolean eh_beliche) {
+	private Cama(int id_cama, int cod_cama, String pos_cama, String descr_cama, boolean eh_bel) {
 		super();
 		this.id_cama = id_cama;
 		this.cod_cama = cod_cama;
@@ -33,5 +33,5 @@ public class Cama {
 	}
 	int id_cama, cod_cama;
 	String pos_cama, descr_cama;
-	boolean eh_beliche;
+	boolean eh_bel;
 }

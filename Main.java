@@ -668,7 +668,7 @@ public class Main {
 					System.out.println("Opcao invalida");
 				if(opcao == 1){
 
-					Cama cama[Id_cama] = new Cliente(Id_reserva, 0, NULL, NULL, Eh_bel);                        //CRIANDO O OBJETO CAMA
+					Cama cama[Id_cama] = new Cliente(Id_cama, 0, NULL, NULL, Eh_bel);                        //CRIANDO O OBJETO CAMA
 					System.out.println("Digite o Codigo da cama, a posição, a descrição da cama e se é beliche");
 					
 					System.out.println("Digite o Código da cama");
@@ -687,10 +687,14 @@ public class Main {
 					eh_bel = digite.nextInt();
 					if(eh_bel < 1 || eh_bel > 2)
 						System.out.println("Opcao invalida);
-					else if(eh_bel == 1)
+					else if(eh_bel == 1){
 						Eh_bel = true;
-					else
+						cama[Id_cama].setEh_bel(Eh_bel);
+					}
+					else{
 						Eh_bel = false;
+						cama[Id_cama].setEh_bel(Eh_bel);
+					}
 					cama.add(Id_cama);                        //ADICIONANDO O ID_CAMA NO ARRAYLIST
 					Id_cama += i;                             //INCREMENTANDO O ID_CAMA
 
@@ -706,7 +710,7 @@ public class Main {
 						if(ident == i)
 							cama.remove(i);
 						else if(i == cama.size())                  
-							System.out.println("Reserva não encontrada");
+							System.out.println("Cama não encontrada");
 					} 
 				}
 				if(opcao == 3){

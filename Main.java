@@ -8,7 +8,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		 
 
-		Scanner digite = new Scanner(System.in);             //OBJETO SCANNER DE ENTRADA
+		Scanner digite = new Scanner(System.in);             //OBJETO SCANNER DE ENTRADA DADOS
 
 		// ARRAYS PARA GUARDAR AS IDS DOS OBJETOS
 		
@@ -127,7 +127,7 @@ public class Main {
 
 						if(ident == i)
 							cliente.remove(i);
-						else if(i + 1 == cliente.size())
+						else if(i == cliente.size())
 							System.out.println("Cliente não encontrado");
 					} 
 				}
@@ -243,7 +243,7 @@ public class Main {
 							}
 							while(alter != 9);
 							}
-							else if(i + 1 == cliente.size())
+							else if(i == cliente.size())
 								System.out.println("Cliente não encontrado!");
 						}
 					}
@@ -407,13 +407,13 @@ public class Main {
 					System.out.println("Opcao invalida");
 				if(opcao == 1){
 					
-					for(Integer i : cliente)
+					for(Integer i : cliente)                    // LISTA DE ARRAY CLIENTE
+						System.out.println(i);         
+
+					for(Integer i : quarto)                     // LISTA DE ARRAY QUARTO
 						System.out.println(i);
 
-					for(Integer i : quarto)
-						System.out.println(i);
-
-					for(Integer i : cama)
+					for(Integer i : cama)                       // LISTA DE ARRAY CAMA
 						System.out.println(i);
 
 					Reserva reserva[Id_reserva] = new Cliente(Id_reserva, 0, 0, 0, 0, 0);
@@ -475,14 +475,14 @@ public class Main {
 					
 					while(ok != true){
 						System.out.println("Digite a data de entrada do cliente");
-						Integer Dt_in = digite.nextInt();
+						Dt_in = digite.nextInt();
 						Pattern verif = Pattern.compile([0-9|"/"|^a-z|^A-Z|\s]);
 						Matcher compara = verif.matcher(Dt_in);
 						ok = matcher.find();
 						if(ok == false)
 						System.out.println("data de entrada inválida");
 					}
-					reserva[ident].setDt_in(Dt_in);               //SET DA DATA DE ENTRADA NO OBJETO RESERVA
+					reserva[ident].setDt_in(Dt_in);                              //SET DA DATA DE ENTRADA NO OBJETO RESERVA
 
 					ok = false;
 
@@ -490,7 +490,7 @@ public class Main {
 					
 					while(ok != true){
 						System.out.println("Digite a data de saída do cliente");
-						Integer Dt_out = digite.nextInt();
+						Dt_out = digite.nextInt();
 						Pattern verif = Pattern.compile([0-9|"/"|^a-z|^A-Z|\s]);
 						Matcher compara = verif.matcher(Dt_in);
 						ok = matcher.find();
@@ -554,47 +554,96 @@ public class Main {
 									System.out.println("Opção invalida ");
 								if(alter == 1){
 
-									NomeQuarto = NULL;
-									while(Nome == NULL){
-										System.out.println("Digite o novo nome");
-										NomeQuarto = digite.next();
+									System.out.println("Digite o Id do cliente");
+									ident = digite.nextInt();
+									ok = false;
+									while(ok != true){
+
+										for(Integer i : cliente){          //PERCORRENDO A ARRAY CLIENTE
+							
+											if(ident == i){
+												ok = true;
+												reserva[ident].setId_cliente(i);
+											}else if(i == quarto.size())
+												System.out.println("Id do cliente não encontrado");
+										}
 									}
-									reserva[ident].setId_cliente(id_cliente);
 								}
 								
 								if(alter == 2){
 
-									descr = NULL;;
-									while(descr == NULL){
-										System.out.println("Descreva o quarto");
-							 			Descr = digite.next();
+									System.out.println("Digite o Id do quarto");
+									ident = digite.nextInt();
+									ok = false;
+									while(ok != true){
+
+										for(Integer i : quarto){           //PERCORRENDO A ARRAY QUARTO
+							
+											if(ident == i){
+												ok = true;
+												reserva[ident].setId_quarto(i);
+											}else if(i == quarto.size())
+												System.out.println("Id do quarto não encontrado");
+										}
 									}
-									quarto[ident].setDescricao(Descr);
 								}
 								
 								if(alter == 3){
 
-									System.out.println("Digite a nova quantidade");
-									Qtde_cama = digite.nextInt();
-									quarto[ident].setQtde_cama(Qtde_cama);
+									System.out.println("Digite o Id do quarto");
+									ident = digite.nextInt();
+									ok = false;
+									while(ok != true){
+
+										for(Integer i : quarto){           //PERCORRENDO A ARRAY QUARTO
+							
+											if(ident == i){
+												ok = true;
+												reserva[ident].setId_quarto(i);
+											}else if(i == quarto.size())
+												System.out.println("Id do quarto não encontrado");
+										}
+									}
 								}
 								
 								if(alter == 4){
 
-									System.out.println("Tem banheiro no quarto : 1 - sim, 2 - nao");
-									tem_bath = digite.nextInt();
-									if(tem_bath < 1 || tem_bath > 2)
-										System.out.println("Opcao invalida);
-									else if(tem_bath == 1)
-										Tem_bath = true;
-									else
-										Tem_bath = false;
-									quarto[ident].setTem_bath(Tem_bath);
+									ok = false;
+
+									//VERIFICANDO O FORMATO DA DATA DE ENTRADA
+					
+									while(ok != true){
+										System.out.println("Digite a nova data");
+										Dt_in = digite.nextInt();
+										Pattern verif = Pattern.compile([0-9|"/"|^a-z|^A-Z|\s]);
+										Matcher compara = verif.matcher(Dt_in);
+										ok = matcher.find();
+										if(ok == false)
+											System.out.println("data de entrada inválida");
+									}
+									reserva[ident].setDt_in(Dt_in);                              //SET DA DATA DE ENTRADA NO OBJETO RESERVA
+
 								}
-							}
-							while(alter != 5);
+								if(alter == 5){
+
+									ok = false;
+
+									//VERIFICANDO O FORMATO DA DATA DE SAÍDA
+					
+									while(ok != true){
+										System.out.println("Digite a data de saída do cliente");
+										Dt_out = digite.nextInt();
+										Pattern verif = Pattern.compile([0-9|"/"|^a-z|^A-Z|\s]);
+										Matcher compara = verif.matcher(Dt_in);
+										ok = matcher.find();
+										if(ok == false)
+											System.out.println("data de entrada invalida");
+									}
+									reserva[ident].setDt_out(Dt_out);
+								}
+								while(alter != 6);
 						} else
-							System.out.println("Cliente não encontrado!");
+							System.out.println("Reserva não encontrada!");
 					}
 				}
 			}

@@ -326,23 +326,23 @@ public class Main {
 					System.out.println("Quantas camas tem no quarto?");
 					Qtde_cama = digite.nextInt();
 
-					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, NomeQuarto, Descr,Tem_bath);
-					cliente.add(Id_quarto);                  //ADICIONANDO ID_QUARTO N0 ARRAY
+					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, NomeQuarto, Descr,Tem_bath);  //CRIANDO UM OBJETO QUARTO
+					cliente.add(Id_quarto);                                                                      //ADICIONANDO ID_QUARTO N0 ARRAY
 
 					try{
-					   File quartoArq = new File("quarto" + Id_quarto + ".txt");              //CRIANDO O OBJETO QUARTO DA CLASSE FILE
+					   File quartoArq = new File("quarto" + Id_quarto + ".txt");                                 //CRIANDO O OBJETO QUARTO DA CLASSE FILE
 					}catch(IOException e){
 						System.out.println("Erro ao criar arquivo");
 						e.printStackTrace();
 					}
 					try{
-					   FileWriter quartoArq = new FileWriter("quarto" + Id_quarto + ".txt"); //CRIANDO O OBJETO QUARTO DA CLASSE FILEWRITER
+					   FileWriter quartoArq = new FileWriter("quarto" + Id_quarto + ".txt");                     //CRIANDO O OBJETO QUARTO DA CLASSE FILEWRITER
 					   quartoArq.write(Id_quarto + "|" NomeQuarto + "|" + Descr + "|" + Qtde_cama + "|" + Tem_bath);
 				           clienteArq.close();
 					}catch(IOException e){
 						System.out.println("Erro na gravação");
 					}
-					Id_quarto += 1;                          //ID_QUARTO É AUTOINCREMENTAL
+					Id_quarto += 1;                                                                              //ID_QUARTO É AUTOINCREMENTAL
 				}
 				if(opcao == 2){
 
@@ -443,7 +443,7 @@ public class Main {
 							}
 							while(alter != 5);
 						} else if(i + 1 == quarto.size())
-							System.out.println("Cliente não encontrado!");
+							System.out.println("Quarto não encontrado!");
 					}
 				}
 			}
@@ -454,6 +454,8 @@ public class Main {
 			
 			if(op == 3){
 
+				//OPÇÕES DO OBJETO RESERVA
+				
 				do{
 				System.out.println("\nMenu de Opcoes\n");
 				System.out.println("1 : Inserir Reserva");
@@ -476,7 +478,7 @@ public class Main {
 					for(Integer i : cama)                       // LISTA DE ARRAY CAMA
 						System.out.println(i);
 
-					Reserva reserva[Id_reserva] = new Cliente(Id_reserva, 0, 0, 0, 0, 0);
+					Reserva reserva[Id_reserva] = new Cliente(Id_reserva, 0, 0, 0, 0, 0);                             //CRIANDO UM OBJETO RESERVA
 					System.out.println("Digite o Id do quarto, Id do Cliente, Id da cama, data de entrada e saída");
 
 					// INSERINDO O ID DO QUARTO - VALOR FIXO E AUTOINCREMENTAL
@@ -486,7 +488,7 @@ public class Main {
 					ok = false;
 					while(ok != true){
 
-						for(Integer i : quarto){           //PERCORRENDO A ARRAY QUARTO
+						for(Integer i : quarto){                                                                  //PERCORRENDO A ARRAY QUARTO
 							
 							if(ident == i){
 								ok = true;
@@ -503,7 +505,7 @@ public class Main {
 					ok = false;
 					while(ok != true){
 
-						for(Integer i : cliente){          //PERCORRENDO A ARRAY CLIENTE
+						for(Integer i : cliente){                                                                 //PERCORRENDO A ARRAY CLIENTE
 							
 							if(ident == i){
 								ok = true;
@@ -520,7 +522,7 @@ public class Main {
 					ok = false;
 					while(ok != true){
 
-						for(Integer i : cama){           //PERCORRENDO A ARRAY CAMA							
+						for(Integer i : cama){                                                                    //PERCORRENDO A ARRAY CAMA							
 							if(ident == i){
 								ok = true;
 								reserva[ident].setId_cama(i);
@@ -542,7 +544,7 @@ public class Main {
 						if(ok == false)
 						System.out.println("data de entrada inválida");
 					}
-					reserva[ident].setDt_in(Dt_in);                              //SET DA DATA DE ENTRADA NO OBJETO RESERVA
+					reserva[ident].setDt_in(Dt_in);                                                                  //SET DA DATA DE ENTRADA NO OBJETO RESERVA
 
 					ok = false;
 
@@ -557,24 +559,24 @@ public class Main {
 						if(ok == false)
 						System.out.println("data de entrada invalida");
 					}
-					reserva[ident].setDt_out(Dt_out);                           //SET DA DATA DE SAÍDA NO OBJETO RESERVA
+					reserva[ident].setDt_out(Dt_out);                                                                //SET DA DATA DE SAÍDA NO OBJETO RESERVA
 
-					reserva.add(Id_reserva);            //ADICIONANDO O ID RESERVA AO ARRAYLIST
+					reserva.add(Id_reserva);                                                                         //ADICIONANDO O ID RESERVA AO ARRAYLIST
 					try{
-					   File reservaeArq = new File("reserva" + Id_reserva + ".txt");              //CRIANDO O OBJETO RESERVA DA CLASSE FILE
+					   File reservaeArq = new File("reserva" + Id_reserva + ".txt");                                 //CRIANDO O OBJETO RESERVA DA CLASSE FILE
 					}catch(IOException e){
 						System.out.println("Erro ao criar arquivo");
 						e.printStackTrace();
 					}
 					try{
-					   FileWriter reservaArq = new FileWriter("reserva" + Id_reserva + ".txt"); //CRIANDO O OBJETO RESERVA DA CLASSE FILEWRITER
+					   FileWriter reservaArq = new FileWriter("reserva" + Id_reserva + ".txt");                      //CRIANDO O OBJETO RESERVA DA CLASSE FILEWRITER
 					   reservaArq.write(Id_reserva + "|" reserva[ident].getId_cliente() + "|" + reserva[ident].getId_quarto() + "|" + reserva[ident].getId_cama() + 
 							    "|" + reserva[ident].getDt_in() + "|" + reserva[ident].getDt_in() + "|" + reserva[ident].getDt_out());
 				           clienteArq.close();
 					}catch(IOException e){
 						System.out.println("Erro na gravação");
 					}
-					Id_reserva += 1;                    //INCREMENTANDO ID_RESERVA
+					Id_reserva += 1;                                                                                 //INCREMENTANDO ID_RESERVA
 				}
 
 					
@@ -611,7 +613,7 @@ public class Main {
 							System.out.println("Data de entrada: " + reserva[ident].getDt_in());
 							System.out.println("Data de saída: " + reserva[ident].getDt_out());
 
-							//ALTERANDO A RESERVA
+							//OPÇOES DE ALTERAÇÃO
 							
 							do{
 								System.out.println("\nOpções:\n");
@@ -633,7 +635,7 @@ public class Main {
 									ok = false;
 									while(ok != true){
 
-										for(Integer i : cliente){          //PERCORRENDO A ARRAY CLIENTE
+										for(Integer i : cliente){                                          //PERCORRENDO O ARRAY CLIENTE
 							
 											if(ident == i){
 												ok = true;
@@ -651,7 +653,7 @@ public class Main {
 									ok = false;
 									while(ok != true){
 
-										for(Integer i : quarto){           //PERCORRENDO A ARRAY QUARTO
+										for(Integer i : quarto){                                          //PERCORRENDO O ARRAY QUARTO
 							
 											if(ident == i){
 												ok = true;
@@ -664,18 +666,18 @@ public class Main {
 								
 								if(alter == 3){
 
-									System.out.println("Digite o Id do quarto");
+									System.out.println("Digite o Id da cama");
 									ident = digite.nextInt();
 									ok = false;
 									while(ok != true){
 
-										for(Integer i : quarto){           //PERCORRENDO A ARRAY QUARTO
+										for(Integer i : cama){                                        //PERCORRENDO O ARRAY CAMA
 							
 											if(ident == i){
 												ok = true;
-												reserva[ident].setId_quarto(i);
+												reserva[ident].setId_cama(i);
 											}else if(i == quarto.size())
-												System.out.println("Id do quarto não encontrado");
+												System.out.println("Id da cama não encontrado");
 										}
 									}
 								}
@@ -695,7 +697,7 @@ public class Main {
 										if(ok == false)
 											System.out.println("data de entrada inválida");
 									}
-									reserva[ident].setDt_in(Dt_in);                              //SET DA DATA DE ENTRADA NO OBJETO RESERVA
+									reserva[ident].setDt_in(Dt_in);                                      //SET DA DATA DE ENTRADA NO OBJETO RESERVA
 
 								}
 								if(alter == 5){
@@ -715,6 +717,18 @@ public class Main {
 									}
 									reserva[ident].setDt_out(Dt_out);
 								}
+
+								//ATUALIZANDO O ARQUIVO RESERVA
+								
+								try{
+					                	   FileWriter reservaArq = new FileWriter("reserva" + ident + ".txt"); //SOBRESCREVE O OBJETO RESERVA DA CLASSE FILEWRITER
+					                           reservaArq.write(reserva[ident].getId_reserva() + "|" reserva[ident].getId_cliente() + "|" + reserva[ident].getId_quarto() + "|" + 
+										    reserva[ident].getId_cama() + "|" + reserva[ident].getDt_in() + "|" + reserva[ident].getDt_out());
+				           			   clienteArq.close();
+								}catch(IOException e){
+									System.out.println("Erro na gravação");
+								}
+							}
 								while(alter != 6);
 						} else
 							System.out.println("Reserva não encontrada!");
@@ -730,6 +744,8 @@ public class Main {
 			
 			if(op == 4){
 
+			//OPÇÕES DO OBJETO CAMA
+			
 			do{
 				System.out.println("\nMenu de Opcoes\n");
 				System.out.println("1 : Inserir Cama");
@@ -743,7 +759,7 @@ public class Main {
 					System.out.println("Opcao invalida");
 				if(opcao == 1){
 
-					Cama cama[Id_cama] = new Cliente(Id_cama, 0, NULL, NULL, Eh_bel);                        //CRIANDO O OBJETO CAMA
+					Cama cama[Id_cama] = new Cliente(Id_cama, 0, NULL, NULL, Eh_bel);                          //CRIANDO O OBJETO CAMA
 					System.out.println("Digite o Codigo da cama, a posição, a descrição da cama e se é beliche");
 					
 					System.out.println("Digite o Código da cama");
@@ -770,22 +786,22 @@ public class Main {
 						Eh_bel = false;
 						cama[Id_cama].setEh_bel(Eh_bel);
 					}
-					cama.add(Id_cama);                        //ADICIONANDO O ID_CAMA NO ARRAYLIST
+					cama.add(Id_cama);                                                                   //ADICIONANDO O ID_CAMA NO ARRAYLIST
 					try{
-					   File reservaeArq = new File("reserva" + Id_reserva + ".txt");              //CRIANDO O OBJETO RESERVA DA CLASSE FILE
+					   File reservaeArq = new File("reserva" + Id_reserva + ".txt");                     //CRIANDO O OBJETO RESERVA DA CLASSE FILE
 					}catch(IOException e){
 						System.out.println("Erro ao criar arquivo");
 						e.printStackTrace();
 					}
 					try{
-					   FileWriter camaArq = new FileWriter("cama" + Id_cama + ".txt");            //CRIANDO O OBJETO CAMA DA CLASSE FILEWRITER
+					   FileWriter camaArq = new FileWriter("cama" + Id_cama + ".txt");                   //CRIANDO O OBJETO CAMA DA CLASSE FILEWRITER
 					   camaArq.write(Id_cama + "|" cama[ident].getCod_cama() + "|" + cama[ident].getPos_cama() + "|" + cama[ident].getDescr_cama() + 
 							    "|" + cama[ident].getEh_bel());
 				           clienteArq.close();
 					}catch(IOException e){
 						System.out.println("Erro na gravação");
 					}
-					Id_cama += i;                             //INCREMENTANDO O ID_CAMA
+					Id_cama += i;                                                                        //INCREMENTANDO O ID_CAMA
 
 				}
 
@@ -794,7 +810,7 @@ public class Main {
 
 					System.out.println("Digite o Id da cama");
 					ident = digite.nextInt();
-					for(Integer i : cama){                             //PERCORRENDO O ARRAY CAMA
+					for(Integer i : cama){                                                               //PERCORRENDO O ARRAY CAMA
 
 						if(ident == i)
 							cama.remove(i);
@@ -825,7 +841,7 @@ public class Main {
 							else
 								System.out.println("Não É beliche");
 
-							//ALTERANDO A CAMA
+							//OPÇÕES DE ALTERAÇÃO DO OBJETO CAMA
 							
 							do{
 								System.out.println("\nOpções:\n");
@@ -875,11 +891,24 @@ public class Main {
 										cama[ident].setEhbel(Eh_bel);
 									}	
 								}
+
+								//ATUALIZANDO O ARQUIVO CAMA
+								
+								try{
+				   				  FileWriter camaArq = new FileWriter("cama" + ident + ".txt"); //SOBRESCREVE O OBJETO RESERVA DA CLASSE FILEWRITER
+				                                  camaArq.write(cama[ident].getId_cama() + "|" cama[ident].getCod_cama() + "|" + cama[ident].getPos_cama() + "|" + 
+				                                  reserva[ident].getDescr_cama() + "|" + reserva[ident].isEh_bel());
+				                                  clienteArq.close();
+				                                  }catch(IOException e){
+					                          System.out.println("Erro na gravação");
+				                                }
+							}
 								while(alter != 5);
 						} else
 							System.out.println("Cama não encontrada!");
 					}
 				}
+				
 			}
 			while(opcao != 5);
 			}

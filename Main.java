@@ -41,7 +41,7 @@ public class Main {
 				System.out.println("Opcao invalida");
 			if(op == 1){
 
-				//OPÇÕES DE MANIPULAÇÃO DO OBJETO
+				//OPÇÕES DO OBJETO
 				
 				do{
 				System.out.println("\nMenu de Opcoes\n");
@@ -114,8 +114,24 @@ public class Main {
 					// CRIANDO UM OBJETO CLIENTE COM SEUS ATRIBUTOS
 					
 					Cliente cliente[Id_cliente] = new Cliente(Id_cliente, Cep, Cpf, Dt_nasc, Nome, End, Pais, Num_pas, Email);
-					cliente.add(Id_cliente);          //ADICIONANDO ID_CLIENTE NA ARRAY
-					Id_cliente += 1;                  //ID_CLIENTE É AUTOINCREMENTAL
+					cliente.add(Id_cliente);                                                  //ADICIONANDO ID_CLIENTE NA ARRAY
+					try{
+					   File clienteArq = new File("cliente" + Id_cliente + ".txt");              //CRIANDO O OBJETO CLIENTE DA CLASSE FILE
+					}catch(IOException e){
+						System.out.println("Erro ao criar arquivo");
+						e.printStackTrace();
+					}
+					try{
+					   FileWriter clienteArq = new FileWriter("cliente" + Id_cliente + ".txt"); //CRIANDO O OBJETO CLIENTE DA CLASSE FILEWRITER
+					   clienteArq.write(Id_cliente + "|" Nome + "|" + Cpf + "|" + Dt_nasc + "|" + End + "|" + Cep + "|" +
+							    Email + "|" + Num_pas + "|" + Pais );
+				           clienteArq.close();
+					}catch(IOException e){
+						System.out.println("Erro na gravação");
+					}
+					
+					
+					Id_cliente += 1;                                                   //ID_CLIENTE É AUTOINCREMENTAL
 				}
 				if(opcao == 2){
 

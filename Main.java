@@ -114,7 +114,7 @@ public class Main {
 					// CRIANDO UM OBJETO CLIENTE COM SEUS ATRIBUTOS
 					
 					Cliente cliente[Id_cliente] = new Cliente(Id_cliente, Cep, Cpf, Dt_nasc, Nome, End, Pais, Num_pas, Email);
-					cliente.add(Id_cliente);                                                  //ADICIONANDO ID_CLIENTE NA ARRAY
+					cliente.add(Id_cliente);                                                     //ADICIONANDO ID_CLIENTE NA ARRAY
 					try{
 					   File clienteArq = new File("cliente" + Id_cliente + ".txt");              //CRIANDO O OBJETO CLIENTE DA CLASSE FILE
 					}catch(IOException e){
@@ -131,7 +131,7 @@ public class Main {
 					}
 					
 					
-					Id_cliente += 1;                                                   //ID_CLIENTE É AUTOINCREMENTAL
+					Id_cliente += 1;                                                            //ID_CLIENTE É AUTOINCREMENTAL
 				}
 				if(opcao == 2){
 
@@ -310,6 +310,20 @@ public class Main {
 
 					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, NomeQuarto, Descr,Tem_bath);
 					cliente.add(Id_quarto);                  //ADICIONANDO ID_QUARTO N0 ARRAY
+
+					try{
+					   File quartoArq = new File("quarto" + Id_quarto + ".txt");              //CRIANDO O OBJETO QUARTO DA CLASSE FILE
+					}catch(IOException e){
+						System.out.println("Erro ao criar arquivo");
+						e.printStackTrace();
+					}
+					try{
+					   FileWriter quartoArq = new FileWriter("quarto" + Id_quarto + ".txt"); //CRIANDO O OBJETO QUARTO DA CLASSE FILEWRITER
+					   quartoArq.write(Id_quarto + "|" NomeQuarto + "|" + Descr + "|" + Qtde_cama + "|" + Tem_bath);
+				           clienteArq.close();
+					}catch(IOException e){
+						System.out.println("Erro na gravação");
+					}
 					Id_quarto += 1;                          //ID_QUARTO É AUTOINCREMENTAL
 				}
 				if(opcao == 2){
@@ -515,6 +529,20 @@ public class Main {
 					reserva[ident].setDt_out(Dt_out);                           //SET DA DATA DE SAÍDA NO OBJETO RESERVA
 
 					reserva.add(Id_reserva);            //ADICIONANDO O ID RESERVA AO ARRAYLIST
+					try{
+					   File reservaeArq = new File("reserva" + Id_reserva + ".txt");              //CRIANDO O OBJETO RESERVA DA CLASSE FILE
+					}catch(IOException e){
+						System.out.println("Erro ao criar arquivo");
+						e.printStackTrace();
+					}
+					try{
+					   FileWriter reservaArq = new FileWriter("reserva" + Id_reserva + ".txt"); //CRIANDO O OBJETO RESERVA DA CLASSE FILEWRITER
+					   reservaArq.write(Id_reserva + "|" reserva[ident].getId_cliente() + "|" + reserva[ident].getId_quarto() + "|" + reserva[ident].getId_cama() + 
+							    "|" + reserva[ident].getDt_in() + "|" + reserva[ident].getDt_in() + "|" + reserva[ident].getDt_out());
+				           clienteArq.close();
+					}catch(IOException e){
+						System.out.println("Erro na gravação");
+					}
 					Id_reserva += 1;                    //INCREMENTANDO ID_RESERVA
 				}
 
@@ -712,6 +740,20 @@ public class Main {
 						cama[Id_cama].setEh_bel(Eh_bel);
 					}
 					cama.add(Id_cama);                        //ADICIONANDO O ID_CAMA NO ARRAYLIST
+					try{
+					   File reservaeArq = new File("reserva" + Id_reserva + ".txt");              //CRIANDO O OBJETO RESERVA DA CLASSE FILE
+					}catch(IOException e){
+						System.out.println("Erro ao criar arquivo");
+						e.printStackTrace();
+					}
+					try{
+					   FileWriter camaArq = new FileWriter("cama" + Id_cama + ".txt");            //CRIANDO O OBJETO CAMA DA CLASSE FILEWRITER
+					   camaArq.write(Id_cama + "|" cama[ident].getCod_cama() + "|" + cama[ident].getPos_cama() + "|" + cama[ident].getDescr_cama() + 
+							    "|" + cama[ident].getEh_bel());
+				           clienteArq.close();
+					}catch(IOException e){
+						System.out.println("Erro na gravação");
+					}
 					Id_cama += i;                             //INCREMENTANDO O ID_CAMA
 
 				}

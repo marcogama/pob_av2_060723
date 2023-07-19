@@ -41,7 +41,7 @@ public class Main {
 				System.out.println("Opcao invalida");
 			if(op == 1){
 
-				//OPÇÕES DO OBJETO
+				//OPÇÕES DO OBJETO CLIENTE
 				
 				do{
 				System.out.println("\nMenu de Opcoes\n");
@@ -154,8 +154,9 @@ public class Main {
 
 					System.out.println("Digite o id do cliente para alterar");
 					ident = digite.nextInt();
-					for(Integer i : cliente){
-						if(ident == i){
+					
+					for(Integer i : cliente){                                              //PERCORRENDO A ARRAY CLIENTE
+						if(ident == i){                                                //LISTANDO UM CLIENTE
 							System.out.println("Id : " + cliente[ident].getId_cli());
 							System.out.println("Cep : " + cliente[ident].getPos_code_cli());
 							System.out.println("Cpf : " + cliente[ident].getCpf_cli());
@@ -165,6 +166,9 @@ public class Main {
 							System.out.println("País : " + cliente[ident].getNome_pais_cli());
 							System.out.println("Numero do passaporte : " + cliente[ident].getPass_cli());
 							System.out.println("Email : " + cliente[ident].getEmail_cli());
+
+							//OPÇÕES DE ALTERAÇÃO DO OBJETO CLIENTE
+							
 							do{
 								System.out.println("\nOpções:\n");
 								System.out.println("1 : Nome ");
@@ -254,6 +258,18 @@ public class Main {
 									}
 									cliente[ident].setEmail_cli(Email);
 								}
+
+								//ATUALIZANDO O ARQUIVO CLIENTE
+								
+								try{
+					                	   FileWriter clienteArq = new FileWriter("cliente" + ident + ".txt"); //SOBRESCREVE O OBJETO CLIENTE DA CLASSE FILEWRITER
+					                           clienteArq.write(cliente[ident].getId_cliente() + "|" cliente[ident].getNome() + "|" + cliente[ident].getCpf() + "|" + 
+										    cliente[ident].getDt_nasc() + "|" + cliente[ident].getEnd() + "|" + cliente[ident]getCep() + "|" +
+							                            cliente[ident].getEmail() + "|" + cliente[ident].getNum_pas() + "|" + cliente[ident].getPais());
+				           			   clienteArq.close();
+								}catch(IOException e){
+									System.out.println("Erro na gravação");
+								}
 							}
 							while(alter != 9);
 							}
@@ -268,6 +284,8 @@ public class Main {
 			//CRUD QUARTO
 			
 			if(op == 2){ 
+
+				//OPÇÕES DO OBJETO QUARTO
 
 				do{
 				System.out.println("\nMenu de Opcoes\n");
@@ -347,8 +365,8 @@ public class Main {
 
 					System.out.println("Digite o id do quarto para alterar");
 					ident = digite.nextInt();
-					for(Integer i : quarto){
-						if(ident == i){
+					for(Integer i : quarto){                                //PERCORRRENDO A ARRAY QUARTO
+						if(ident == i){                                 //LISTANDO UM OBJETO
 							System.out.println("Id : " + quarto[ident].getId_quarto());
 							System.out.println("Quantidade de camas : " + quarto[ident].getQtde_cama());
 							System.out.println("Nome do quarto : " + quarto[ident].getNomeQuarto());
@@ -357,6 +375,8 @@ public class Main {
 								System.out.println("Tem banheiro");
 							else
 								System.out.println("Não tem banheiro");
+
+							//OPÇÕES DE ALTERAÇÃO DO OBJETO QUARTO
 							
 							do{
 								System.out.println("\nOpções:\n");
@@ -408,6 +428,17 @@ public class Main {
 									else
 										Tem_bath = false;
 									quarto[ident].setTem_bath(Tem_bath);
+								}
+
+								//ATUALIZANDO O ARQUIVO QUARTO
+								
+								try{
+					                	   FileWriter quartoArq = new FileWriter("quarto" + ident + ".txt"); //SOBRESCREVE O OBJETO CLIENTE DA CLASSE FILEWRITER
+					                           clienteArq.write(quarto[ident].getId_quarto() + "|" quarto[ident].getNome() + "|" + quarto[ident].getDescr() + "|" + 
+										    quarto[ident].getQtde_cama() + "|" + quarto[ident].isTem_bath());
+				           			   clienteArq.close();
+								}catch(IOException e){
+									System.out.println("Erro na gravação");
 								}
 							}
 							while(alter != 5);

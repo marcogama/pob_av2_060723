@@ -188,20 +188,24 @@ public class Main {
 								if(alter == 1){
 
 									Nome = NULL;
+									ok = false;
 									while(Nome == NULL){
 										System.out.println("Digite o novo nome");
 										Nome = digite.next();
 									}
 									cliente[ident].setNome_cli(Nome);
+									ok = true;
 								}
 								if(alter == 2){
 
 									Cpf = 0;
+									ok = false;
 									while(Cpf == 0){
 										System.out.println("Digite o novo cpf");
 										Cpf = digite.nextInt();
 									}
 									cliente[ident].setCpf_cli(Cpf);
+									ok = true;
 								}
 								if(alter == 3){
 
@@ -220,29 +224,37 @@ public class Main {
 								if(alter == 4){
 									
 									End = NULL;
+									ok = false;
 									while(End == NULL){
 										System.out.println("Digite o novo endereço");
 										End = digite.next();
 									}
 									cliente[ident].setEnd_cli(End);
+									ok = true;
 								}
 								if(alter == 5){
 
+									ok = false;
 									System.out.println("Digite o novo cep");
     									Cep = digite.nextInt();
 									cliente[ident].setPos_code_cli(Cep);
+									ok = true;
 								}
 								if(alter == 6){
 
+									ok = false;
 									System.out.println("Digite o novo passaporte");
     									String NumPas = numPas.next();
 									cliente[ident].setPass_cli(NumPas);
+									ok = true;
 								}
 								if(alter == 7){
 
+									ok = false;
 									System.out.println("Digite o País");
     									Pais = digite.next();
 									cliente[ident].setNome_pais_cli(Pais);
+									ok = true;
 								}
 								if(alter == 8){
 
@@ -260,15 +272,17 @@ public class Main {
 								}
 
 								//ATUALIZANDO O ARQUIVO CLIENTE
-								
-								try{
-					                	   FileWriter clienteArq = new FileWriter("cliente" + ident + ".txt"); //SOBRESCREVE O OBJETO CLIENTE DA CLASSE FILEWRITER
-					                           clienteArq.write(cliente[ident].getId_cliente() + "|" cliente[ident].getNome() + "|" + cliente[ident].getCpf() + "|" + 
-										    cliente[ident].getDt_nasc() + "|" + cliente[ident].getEnd() + "|" + cliente[ident]getCep() + "|" +
-							                            cliente[ident].getEmail() + "|" + cliente[ident].getNum_pas() + "|" + cliente[ident].getPais());
-				           			   clienteArq.close();
-								}catch(IOException e){
-									System.out.println("Erro na gravação");
+
+								if(ok == true;){
+									try{
+					                	    	  FileWriter clienteArq = new FileWriter("cliente" + ident + ".txt"); //SOBRESCREVE O OBJETO CLIENTE DA CLASSE FILEWRITER
+					                            	  clienteArq.write(cliente[ident].getId_cliente() + "|" cliente[ident].getNome() + "|" + cliente[ident].getCpf() + "|" + 
+										   	   cliente[ident].getDt_nasc() + "|" + cliente[ident].getEnd() + "|" + cliente[ident]getCep() + "|" +
+							                           	   cliente[ident].getEmail() + "|" + cliente[ident].getNum_pas() + "|" + cliente[ident].getPais());
+				           			    	  clienteArq.close();
+								 	}catch(IOException e){
+										System.out.println("Erro na gravação");
+								 	}
 								}
 							}
 							while(alter != 9);
@@ -392,33 +406,40 @@ public class Main {
 									System.out.println("Opção invalida ");
 								if(alter == 1){
 
+									ok = false;
 									NomeQuarto = NULL;
 									while(Nome == NULL){
 										System.out.println("Digite o novo nome");
 										NomeQuarto = digite.next();
 									}
 									quarto[ident].setNomeQuarto(NomeQuarto);
+									ok = true;
 								}
 								
 								if(alter == 2){
 
-									Descr = NULL;;
+									ok = false;
+									Descr = NULL;
 									while(Descr == NULL){
 										System.out.println("Descreva o quarto");
 							 			Descr = digite.next();
 									}
 									quarto[ident].setDescricao(Descr);
+									ok = true;
 								}
 								
 								if(alter == 3){
 
+									ok = false;
 									System.out.println("Digite a nova quantidade");
 									Qtde_cama = digite.nextInt();
 									quarto[ident].setQtde_cama(Qtde_cama);
+									ok = true;
 								}
 								
 								if(alter == 4){
 
+									ok = false;
 									System.out.println("Tem banheiro no quarto : 1 - sim, 2 - nao");
 									tem_bath = digite.nextInt();
 									if(tem_bath < 1 || tem_bath > 2)
@@ -428,17 +449,20 @@ public class Main {
 									else
 										Tem_bath = false;
 									quarto[ident].setTem_bath(Tem_bath);
+									ok = true;
 								}
 
 								//ATUALIZANDO O ARQUIVO QUARTO
-								
-								try{
-					                	   FileWriter quartoArq = new FileWriter("quarto" + ident + ".txt"); //SOBRESCREVE O OBJETO CLIENTE DA CLASSE FILEWRITER
-					                           clienteArq.write(quarto[ident].getId_quarto() + "|" quarto[ident].getNome() + "|" + quarto[ident].getDescr() + "|" + 
-										    quarto[ident].getQtde_cama() + "|" + quarto[ident].isTem_bath());
-				           			   clienteArq.close();
-								}catch(IOException e){
-									System.out.println("Erro na gravação");
+
+								if(ok == true){
+									try{
+					                	  	  FileWriter quartoArq = new FileWriter("quarto" + ident + ".txt"); //SOBRESCREVE O OBJETO CLIENTE DA CLASSE FILEWRITER
+					                           	  clienteArq.write(quarto[ident].getId_quarto() + "|" quarto[ident].getNome() + "|" + quarto[ident].getDescr() + "|" + 
+										    	   quarto[ident].getQtde_cama() + "|" + quarto[ident].isTem_bath());
+				           			   	  clienteArq.close();
+								 	}catch(IOException e){
+										System.out.println("Erro na gravação");
+								 	}
 								}
 							}
 							while(alter != 5);
@@ -719,14 +743,16 @@ public class Main {
 								}
 
 								//ATUALIZANDO O ARQUIVO RESERVA
-								
-								try{
-					                	   FileWriter reservaArq = new FileWriter("reserva" + ident + ".txt"); //SOBRESCREVE O OBJETO RESERVA DA CLASSE FILEWRITER
-					                           reservaArq.write(reserva[ident].getId_reserva() + "|" reserva[ident].getId_cliente() + "|" + reserva[ident].getId_quarto() + "|" + 
-										    reserva[ident].getId_cama() + "|" + reserva[ident].getDt_in() + "|" + reserva[ident].getDt_out());
-				           			   clienteArq.close();
-								}catch(IOException e){
-									System.out.println("Erro na gravação");
+
+								if(ok == true){
+									try{
+					                	          FileWriter reservaArq = new FileWriter("reserva" + ident + ".txt"); //SOBRESCREVE O OBJETO RESERVA DA CLASSE FILEWRITER
+					                                  reservaArq.write(reserva[ident].getId_reserva() + "|" reserva[ident].getId_cliente() + "|" + reserva[ident].getId_quarto() + "|" + 
+										           reserva[ident].getId_cama() + "|" + reserva[ident].getDt_in() + "|" + reserva[ident].getDt_out());
+				           			          clienteArq.close();
+								        }catch(IOException e){
+										System.out.println("Erro na gravação");
+								 	}
 								}
 							}
 								while(alter != 6);
@@ -857,27 +883,34 @@ public class Main {
 									System.out.println("Opção invalida ");
 								if(alter == 1){
 
+									ok = false;
 									System.out.println("Digite o Código da cama");
 					                                Cod_cama = digite.nextInt();
-					                                cama[ident].setCod_cama(Cod_cama);	
+					                                cama[ident].setCod_cama(Cod_cama);
+									ok = true;
 								}
 								
 								if(alter == 2){
 
+									ok = false;
 									System.out.println("Digite a posição da cama");
 									Pos_cama = digite.next();
 									cama[ident].setPos_cama(Pos_cama);
+									ok = true;
 								}
 								
 								if(alter == 3){
 
+									ok = false;
 									System.out.println("Descreva a cama");
 					                                Descr_cama = digite.next();
 					 				cama[ident].setDescr_cama(Descr_cama);
+									ok = true;
 								}
 								
 								if(alter == 4){
 
+									ok = false;
 									System.out.println("É beliche : 1 - sim, 2 - nao");
 									eh_bel = digite.nextInt();
 									if(eh_bel < 1 || eh_bel > 2)
@@ -889,19 +922,22 @@ public class Main {
 									else{
 										Eh_bel = false;
 										cama[ident].setEhbel(Eh_bel);
-									}	
+									}
+									ok = true;
 								}
 
 								//ATUALIZANDO O ARQUIVO CAMA
-								
-								try{
-				   				  FileWriter camaArq = new FileWriter("cama" + ident + ".txt"); //SOBRESCREVE O OBJETO RESERVA DA CLASSE FILEWRITER
-				                                  camaArq.write(cama[ident].getId_cama() + "|" cama[ident].getCod_cama() + "|" + cama[ident].getPos_cama() + "|" + 
-				                                  reserva[ident].getDescr_cama() + "|" + reserva[ident].isEh_bel());
-				                                  clienteArq.close();
-				                                  }catch(IOException e){
-					                          System.out.println("Erro na gravação");
-				                                }
+
+								if(ok == true;){
+									try{
+				   				  	  FileWriter camaArq = new FileWriter("cama" + ident + ".txt"); //SOBRESCREVE O OBJETO RESERVA DA CLASSE FILEWRITER
+				                                  	  camaArq.write(cama[ident].getId_cama() + "|" cama[ident].getCod_cama() + "|" + cama[ident].getPos_cama() + "|" + 
+				                                 	  		reserva[ident].getDescr_cama() + "|" + reserva[ident].isEh_bel());
+				                                 	  clienteArq.close();
+				                                  	}catch(IOException e){
+					                          		System.out.println("Erro na gravação");
+				                                	}
+								}
 							}
 								while(alter != 5);
 						} else

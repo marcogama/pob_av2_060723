@@ -764,8 +764,6 @@ public class Main {
 			while(opcao != 5);
 			}
 
-			}
-
 			// CRUD CAMA
 			
 			if(op == 4){
@@ -951,6 +949,7 @@ public class Main {
 			
 		}
 		while(op != 5);
+		digite.close();
 	}
 
 }

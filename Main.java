@@ -85,9 +85,11 @@ public class Main {
 						if(ok == false)
 						System.out.println("email invalido");
 					}
-					
+
+					System.out.println("Digite o País.");
 					Pais = digite.next();
-					
+
+					System.out.println("Digite o número do passaporte.");
 					Num_pas = digite.next();
 
 					Cpf = 0;
@@ -108,7 +110,8 @@ public class Main {
 						if(ok == false)
 						System.out.println("data de nascimento invalida");
 					}
-					
+
+					System.out.println("Digite o cpf.");
 					Cep = digite.nextInt();
 
 					// CRIANDO UM OBJETO CLIENTE COM SEUS ATRIBUTOS
@@ -340,7 +343,7 @@ public class Main {
 					System.out.println("Quantas camas tem no quarto?");
 					Qtde_cama = digite.nextInt();
 
-					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, NomeQuarto, Descr,Tem_bath);  //CRIANDO UM OBJETO QUARTO
+					Cliente cliente[Id_quarto] = new Cliente(Id_quarto, Qtde_cama, NomeQuarto, Descr, Tem_bath);  //CRIANDO UM OBJETO QUARTO
 					cliente.add(Id_quarto);                                                                      //ADICIONANDO ID_QUARTO N0 ARRAY
 
 					try{
@@ -366,7 +369,7 @@ public class Main {
 
 						if(ident == i)
 							cliente.remove(i);
-						else if(i + 1 == quarto.size())
+						else if(i == quarto.size())
 							System.out.println("Cliente não encontrado");
 					} 
 				}
@@ -380,7 +383,7 @@ public class Main {
 					System.out.println("Digite o id do quarto para alterar");
 					ident = digite.nextInt();
 					for(Integer i : quarto){                                //PERCORRRENDO A ARRAY QUARTO
-						if(ident == i){                                 //LISTANDO UM OBJETO
+						if(ident == i){                                 //LISTANDO UM OBJETO DA CLASSE QUARTO
 							System.out.println("Id : " + quarto[ident].getId_quarto());
 							System.out.println("Quantidade de camas : " + quarto[ident].getQtde_cama());
 							System.out.println("Nome do quarto : " + quarto[ident].getNomeQuarto());
@@ -466,7 +469,7 @@ public class Main {
 								}
 							}
 							while(alter != 5);
-						} else if(i + 1 == quarto.size())
+						} else if(i == quarto.size())
 							System.out.println("Quarto não encontrado!");
 					}
 				}
@@ -502,7 +505,7 @@ public class Main {
 					for(Integer i : cama)                       // LISTA DE ARRAY CAMA
 						System.out.println(i);
 
-					Reserva reserva[Id_reserva] = new Cliente(Id_reserva, 0, 0, 0, 0, 0);                             //CRIANDO UM OBJETO RESERVA
+					Reserva reserva[Id_reserva] = new Cliente(Id_reserva, 0, 0, 0, 0, 0);                             //CRIANDO UM OBJETO DA CLASSE RESERVA
 					System.out.println("Digite o Id do quarto, Id do Cliente, Id da cama, data de entrada e saída");
 
 					// INSERINDO O ID DO QUARTO - VALOR FIXO E AUTOINCREMENTAL
@@ -783,7 +786,7 @@ public class Main {
 					System.out.println("Opcao invalida");
 				if(opcao == 1){
 
-					Cama cama[Id_cama] = new Cliente(Id_cama, 0, NULL, NULL, Eh_bel);                          //CRIANDO O OBJETO CAMA
+					Cama cama[Id_cama] = new Cliente(Id_cama, 0, NULL, NULL, false);                          //CRIANDO O OBJETO DA CLASSE CAMA
 					System.out.println("Digite o Codigo da cama, a posição, a descrição da cama e se é beliche");
 					
 					System.out.println("Digite o Código da cama");
